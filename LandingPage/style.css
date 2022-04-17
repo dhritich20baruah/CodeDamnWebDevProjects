@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: url("/assets/images/bg01.jpg") no-repeat center/cover ;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex-grow:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Roboto, sans-serif;
+    margin-left: 3em;
+}
+footer{
+    flex-shrink: 0;
+}
+h1{
+    color: #ffffff;
+    font-size: 52px;
+}
+main p{
+    font-size: 17px;
+    color: grey;
+    line-height: 2em;
+}
+main input{
+    background: none;
+    border: 2px solid rgb(163, 159, 159);
+    border-radius: 5px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    width: 20%
+}
+main button{
+    padding: 0.6em;
+    background-color: #1cb495;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff
+}
+footer{
+    color: grey;
+    margin-left: 3em;
+    margin-bottom: 2em;
+}
+#icons{
+    font-size: 20px;
+}
+#icons .fa{
+    margin-right: 1em;
+}
+#thank{
+    font-size: 1em;
+    color: #1cb495;
+    line-height: 1em;
+    display: none;
+    margin: 1em;
+}
+
+@media screen and (max-width: 700px){
+    main h1{
+        display: none;
+    }
+    main p{
+        display: none;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+    form input{
+        width: 90%;
+    }
+    form button{
+        width: 95%;
+        margin-top:1em;
+    }
+    main{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    footer{
+        font-size: 1em;
+        margin-left: 1em;
+    }
+    #thank{
+        display: block;
+    }
+}

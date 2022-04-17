@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+header{
+    background-color: #218380;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
