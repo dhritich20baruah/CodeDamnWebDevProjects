@@ -10,3 +10,37 @@ header{
     display: flex;
     justify-content: space-between;
 }
+main{
+    display: flex;
+}
+#card{
+    display: flex;
+    flex-direction: column;
+    width:80vw;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+    padding: 3em;
+    box-shadow: 0 0 5px grey;
+}
+#questions{
+    font-size: 24px;
+    text-align: left;
+}
+#options{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.btn{
+    background-color: #218380;
+    color: white;
+    text-align: left;
+    border: none;
+    height: 3em;
+    margin: 0.5em;
+    padding: 0.3em;
+    border-radius: 5px;
+}
