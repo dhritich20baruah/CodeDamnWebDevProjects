@@ -71,30 +71,48 @@ var x = setInterval(function() {
 const start = document.getElementById('start-btn')
 const startCard = document.getElementById('start-card')
 const quizCard = document.getElementById('quiz-card')
-const query = document.querySelector('#questions')
+const scoreCard = document.getElementById('score-card')
 
+const query = document.querySelector('#questions')
+const remark = document.getElementById('remark')
+let index =0
 start.addEventListener('click', startQuiz)
+
+function counter(){
+  remark.innerText = ""
+  if(index<questions.length-1){
+    index++
+    displayQuestion(index)
+  }else{
+  quizCard.classList.add('hide')
+  scoreCard.classList.remove('hide')
+  }
+}
 
 function startQuiz(){
   startCard.classList.add('hide')
   quizCard.classList.remove('hide')
-  displayQuestion(0)
+  displayQuestion(index)
 }
 
 function displayQuestion(arg){
-  let index = arg
-  query.innerHTML = `<h2>${questions[index].questionText}</h2>`
+  query.innerHTML = `<h2>${questions[arg].questionText}</h2>`
   for (var i=0; i<4; i++){
-  document.getElementById(`btn${i}`).innerText = questions[index].options[`${i}`]
+  document.getElementById(`btn${i}`).innerText = questions[arg].options[`${i}`]
 }
 }
 
 function setNextQuestion(){
-
+  let arg = 0
+  displayQuestion(arg+1)
+  arg++
 }
 
 function checkAns(num){
-  console.log(document.getElementById(`btn${num}`).innerText == questions[0].answer)
-  console.log(questions[0].answer)
+  if(document.getElementById(`btn${num}`).innerText == questions[index].answer){
+    remark.innerText = 'Correct!'
+  }else{
+    remark.innerText = 'Incorrect!'
+  }
 }
 
