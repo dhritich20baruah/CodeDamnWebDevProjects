@@ -13,17 +13,28 @@ header{
 main{
     display: flex;
 }
-#card{
+#quiz-card, #start-card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+}
+#card, #start{
     display: flex;
     flex-direction: column;
     width:80vw;
     border: 2px solid grey;
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5em;
     padding: 3em;
     box-shadow: 0 0 5px grey;
+}
+#start-card button{
+    width: fit-content
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
 }
 #questions{
     font-size: 24px;

@@ -22,16 +22,25 @@
         </div>         
     </header>
     <main class="">
-        <div id="card" class="">
-            <div id="questions"><h2>Questions</h2></div>
-            <div id="options" class="">
-                <button class="btn">1.Ans</button>
-                <button class="btn">2.Ans</button>
-                <button class="btn">3.Ans</button>
-                <button class="btn">4.Ans</button>
+        <div id="start-card">
+            <div id="start" class="">
+                <h1>Coding Quiz Challenge</h1>
+                <p>Try to answer to following code-related questions within the time limit.</p>
+                <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+                <button class="btn" id="start-btn">Start Quiz</button>
             </div>
-            <hr>
-            <div id="remark"></div>
+        </div>
+        <div id="quiz-card" class="hide">
+            <div id="card">
+                <div id="questions"></div>
+                <div id="options" class="">
+                    <button class="btn" id="btn0" onclick="checkAns(0)">1.Ans</button>
+                    <button class="btn" id="btn1" onclick="checkAns(1)">2.Ans</button>
+                    <button class="btn" id="btn2" onclick="checkAns(2)">3.Ans</button>
+                    <button class="btn" id="btn3" onclick="checkAns(3)">4.Ans</button>
+                </div>
+                <div id="remark"></div>
+            </div>
         </div>
     </main>
     <script src="assets/script.js"></script>

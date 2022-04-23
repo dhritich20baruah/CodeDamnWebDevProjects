@@ -1,4 +1,4 @@
-"use strict"
+
 const questions = [
   {
     questionText: "Commonly used data types DO NOT include:",
@@ -55,14 +55,11 @@ var x = setInterval(function() {
   var distance = countDownDate - now;
 
   // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  demo.innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+  demo.innerHTML = seconds + "s ";
 
   // If the count down is finished, write some text
   if (distance < 0) {
@@ -70,3 +67,34 @@ var x = setInterval(function() {
     demo.innerHTML = "EXPIRED";
   }
 }, 1000);
+
+const start = document.getElementById('start-btn')
+const startCard = document.getElementById('start-card')
+const quizCard = document.getElementById('quiz-card')
+const query = document.querySelector('#questions')
+
+start.addEventListener('click', startQuiz)
+
+function startQuiz(){
+  startCard.classList.add('hide')
+  quizCard.classList.remove('hide')
+  displayQuestion(0)
+}
+
+function displayQuestion(arg){
+  let index = arg
+  query.innerHTML = `<h2>${questions[index].questionText}</h2>`
+  for (var i=0; i<4; i++){
+  document.getElementById(`btn${i}`).innerText = questions[index].options[`${i}`]
+}
+}
+
+function setNextQuestion(){
+
+}
+
+function checkAns(num){
+  console.log(document.getElementById(`btn${num}`).innerText == questions[0].answer)
+  console.log(questions[0].answer)
+}
+
