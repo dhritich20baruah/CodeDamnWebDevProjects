@@ -41,41 +41,20 @@ const questions = [
 ];
 
 
-// TIMER
-// let demo = document.getElementById("demo")
-// Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-// Update the count down every 1 second
-var x = setInterval(function() {
 
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  demo.innerHTML = seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    demo.innerHTML = "EXPIRED";
-  }
-}, 1000);
 
 const start = document.getElementById('start-btn')
 const startCard = document.getElementById('start-card')
 const quizCard = document.getElementById('quiz-card')
 const scoreCard = document.getElementById('score-card')
-
+let score = 0
 const query = document.querySelector('#questions')
 const remark = document.getElementById('remark')
-let index =0
+const finalscore = document.getElementById('finalscore')
+let index = 0
+var initials = document.getElementById('initials')
+var store = document.getElementById("store")
+
 start.addEventListener('click', startQuiz)
 
 function counter(){
@@ -86,6 +65,7 @@ function counter(){
   }else{
   quizCard.classList.add('hide')
   scoreCard.classList.remove('hide')
+  finalscore.innerText = score
   }
 }
 
@@ -102,17 +82,45 @@ function displayQuestion(arg){
 }
 }
 
-function setNextQuestion(){
-  let arg = 0
-  displayQuestion(arg+1)
-  arg++
-}
-
 function checkAns(num){
   if(document.getElementById(`btn${num}`).innerText == questions[index].answer){
     remark.innerText = 'Correct!'
+    score += 10
   }else{
     remark.innerText = 'Incorrect!'
   }
 }
 
+function countdown(y){
+setInterval(()=>{
+  if(y>0){
+  y -= 1;
+  console.log(y)
+  demo.innerHTML = y + "secs"}
+  else{
+    quizCard.classList.add('hide')
+    scoreCard.classList.remove('hide')
+    finalscore.innerText = score
+  }
+}, 1000)
+}
+
+//Storage
+let scoreArr = []
+store.addEventListener('click', ()=>{
+  let scoreobj = {
+    Player: initials.value,
+    Score: score 
+  }
+  scoreArr.push(scoreobj)
+  localStorage.setItem("Score", JSON.stringify(scoreArr))
+  console.log(localStorage)
+})
+
+//display score
+var highscore = document.getElementById("highscores")
+var list = document.querySelector('.list');
+
+scoreArr.forEach(function(element, index){
+  list.innerHTML +=`<li>${element.Player} - ${element.Score}</li>`
+})

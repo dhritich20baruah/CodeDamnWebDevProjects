@@ -11,8 +11,16 @@
     <title>Codedamn - Quiz Project</title>
 </head>
 <body>
-    <h1>All done</h1>
-    <p>Your final score is <span></span></p>
-    <p>Enter initials: <input type="text"><button class="btn">Submit</button></p>
+    <div id="highscores">
+        <h1>Hightscores</h1>
+        <ol class="list">
+            <li></li>
+        </ol>
+        <div id="highscorebtns">
+
+            <a href="index.html"><button id="goback">Go Back</button></a>
+            <button id="clear" onclick="localStorage.clear()">Clear Highscores</button>
+        </div>
+    </div>
 </body>
 </html>
