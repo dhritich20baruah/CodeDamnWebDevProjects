@@ -40,20 +40,17 @@ const questions = [
   },
 ];
 
-
-
-
 const start = document.getElementById('start-btn')
 const startCard = document.getElementById('start-card')
 const quizCard = document.getElementById('quiz-card')
 const scoreCard = document.getElementById('score-card')
-let score = 0
 const query = document.querySelector('#questions')
 const remark = document.getElementById('remark')
 const finalscore = document.getElementById('finalscore')
-let index = 0
 var initials = document.getElementById('initials')
 var store = document.getElementById("store")
+let index = 0
+let score = 0
 
 start.addEventListener('click', startQuiz)
 
@@ -66,6 +63,7 @@ function counter() {
     quizCard.classList.add('hide')
     scoreCard.classList.remove('hide')
     finalscore.innerText = score
+    clearInterval(timer)
   }
 }
 
@@ -76,6 +74,7 @@ function startQuiz() {
   countdown(demo.innerText)
 }
 
+//Argument passed to display question is taken from index
 function displayQuestion(arg) {
   query.innerHTML = `<h2>${questions[arg].questionText}</h2>`
   for (var i = 0; i < 4; i++) {
@@ -83,6 +82,9 @@ function displayQuestion(arg) {
   }
 }
 
+//Evaluation of answer
+//Text in the button is compared with answer in questions array
+//If ans is wrong setInterval is cleared argument passed to countdown is substracted by 10
 function checkAns(num) {
   if (document.getElementById(`btn${num}`).innerText == questions[index].answer) {
     remark.innerText = 'Correct!'
@@ -93,7 +95,9 @@ function checkAns(num) {
     countdown(demo.innerHTML - 10)
   }
 }
-let timer
+
+//Countdown Timer
+let timer//timer is declared globally
 
 function countdown(y){timer = 
   setInterval(()=>{
@@ -111,16 +115,24 @@ function countdown(y){timer =
   }
 
   //Storage
-let scoreArr = []
-store.addEventListener('click', (e) => {
-  e.preventDefault
+  store.addEventListener('click', function(e) {
+  let quizScore = localStorage.getItem('quizScore')
+  if (quizScore == null){
+    scoreArr = []
+  }
+  else{
+    scoreArr = JSON.parse(quizScore)
+  }
   let scoreobj = {
     Player: initials.value,
     Score: score
   }
   scoreArr.push(scoreobj)
-  localStorage.setItem("Score", JSON.stringify(scoreArr))
+  localStorage.setItem("quizScore", JSON.stringify(scoreArr))
   console.log(scoreArr)
 })
+
+
+
 
 
