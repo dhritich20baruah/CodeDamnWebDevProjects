@@ -57,70 +57,70 @@ var store = document.getElementById("store")
 
 start.addEventListener('click', startQuiz)
 
-function counter(){
+function counter() {
   remark.innerText = ""
-  if(index<questions.length-1){
+  if (index < questions.length - 1) {
     index++
     displayQuestion(index)
-  }else{
-  quizCard.classList.add('hide')
-  scoreCard.classList.remove('hide')
-  finalscore.innerText = score
-  }
-}
-
-function startQuiz(){
-  startCard.classList.add('hide')
-  quizCard.classList.remove('hide')
-  displayQuestion(index)
-}
-
-function displayQuestion(arg){
-  query.innerHTML = `<h2>${questions[arg].questionText}</h2>`
-  for (var i=0; i<4; i++){
-  document.getElementById(`btn${i}`).innerText = questions[arg].options[`${i}`]
-}
-}
-
-function checkAns(num){
-  if(document.getElementById(`btn${num}`).innerText == questions[index].answer){
-    remark.innerText = 'Correct!'
-    score += 10
-  }else{
-    remark.innerText = 'Incorrect!'
-  }
-}
-
-function countdown(y){
-setInterval(()=>{
-  if(y>0){
-  y -= 1;
-  console.log(y)
-  demo.innerHTML = y + "secs"}
-  else{
+  } else {
     quizCard.classList.add('hide')
     scoreCard.classList.remove('hide')
     finalscore.innerText = score
   }
-}, 1000)
 }
 
-//Storage
+function startQuiz() {
+  startCard.classList.add('hide')
+  quizCard.classList.remove('hide')
+  displayQuestion(index)
+  countdown(demo.innerText)
+}
+
+function displayQuestion(arg) {
+  query.innerHTML = `<h2>${questions[arg].questionText}</h2>`
+  for (var i = 0; i < 4; i++) {
+    document.getElementById(`btn${i}`).innerText = questions[arg].options[`${i}`]
+  }
+}
+
+function checkAns(num) {
+  if (document.getElementById(`btn${num}`).innerText == questions[index].answer) {
+    remark.innerText = 'Correct!'
+    score += 10
+  } else {
+    clearInterval(timer)
+    remark.innerText = 'Incorrect!'
+    countdown(demo.innerHTML - 10)
+  }
+}
+let timer
+
+function countdown(y){timer = 
+  setInterval(()=>{
+    if (y > 0) {
+      y -= 1;
+      console.log(y)
+      demo.innerHTML = y
+    }    
+    else {
+      quizCard.classList.add('hide')
+      scoreCard.classList.remove('hide')
+      finalscore.innerText = score
+    }
+  }, 1000)
+  }
+
+  //Storage
 let scoreArr = []
-store.addEventListener('click', ()=>{
+store.addEventListener('click', (e) => {
+  e.preventDefault
   let scoreobj = {
     Player: initials.value,
-    Score: score 
+    Score: score
   }
   scoreArr.push(scoreobj)
   localStorage.setItem("Score", JSON.stringify(scoreArr))
-  console.log(localStorage)
+  console.log(scoreArr)
 })
 
-//display score
-var highscore = document.getElementById("highscores")
-var list = document.querySelector('.list');
 
-scoreArr.forEach(function(element, index){
-  list.innerHTML +=`<li>${element.Player} - ${element.Score}</li>`
-})

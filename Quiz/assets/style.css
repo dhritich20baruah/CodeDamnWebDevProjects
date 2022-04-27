@@ -9,6 +9,8 @@ header{
     color: white;
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    padding: 1em
 }
 main{
     display: flex;
@@ -33,6 +35,11 @@ main{
     border-radius: 10px;
     padding: 3em;
     box-shadow: 0 0 5px grey;
+}
+#leaderboard{
+    text-decoration: none;
+    color: white;
+    padding-top: 20px;
 }
 #start-card button{
     width: fit-content
