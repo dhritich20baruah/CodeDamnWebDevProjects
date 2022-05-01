@@ -1,7 +1,12 @@
 import React from 'react'
+import inviteOnly from '../assets/invite_only_landing.svg'
+import leftBgHeader from '../assets/left_bg_landing_header.svg'
+import rightBgHeader from '../assets/right_bg_landing_header.svg'
+import centerBgHeader from '../assets/center_bg_landing_header.svg'
 
 const Home = () => {
   return (
+    <>
     <div className='bg-[#404eed] text-center text-white'>
         <h1 className='text-white text-6xl font-bold py-24'>IMAGINE A PLACE...</h1>
         <p className='py-2'>...where you can belong to a school club, a gaming group, or a worldwide art community.</p>
@@ -15,7 +20,17 @@ const Home = () => {
                     Open Discord in your browser
             </button>
         </div>
+        <div className="bg-images flex justify-end">
+            <img src={leftBgHeader} alt="leftbg" className='h-52'/>
+            <img src={centerBgHeader} alt="centerbg" className='overflow-hidden right-0'/>
+            <img src={rightBgHeader} alt="rightbg" className='h-52'/>
+        </div>
     </div>
+    <div className="section">
+    <img src={inviteOnly} alt="invite only"/>
+    </div>
+
+    </>
   )
 }
 
