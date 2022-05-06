@@ -1,4 +1,5 @@
 import React from 'react'
+import Nav from './Nav';
 import inviteOnly from '../assets/invite_only_landing.svg'
 import hangingout from '../assets/hanging_out_easy_landing.svg'
 import fandom from '../assets/fandom_landing.svg'
@@ -17,8 +18,10 @@ import facebook from '../assets/facebook_icon.svg'
 
 
 const Home = () => {
+  
   return (
     <>
+    {<Nav/>}
       <div className='bg-[#404eed] text-center text-white'>
         <h1 className='text-white text-6xl font-bold py-24'>IMAGINE A PLACE...</h1>
         <p className='py-2'>...where you can belong to a school club, a gaming group, or a worldwide art community.</p>

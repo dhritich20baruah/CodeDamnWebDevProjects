@@ -19,7 +19,7 @@ const Nav = () => {
             <li><Link to='#'>Blog</Link></li>
             <li><Link to='#'>Careers</Link></li>
         </ul>
-        <button className="btn bg-white text-black rounded-3xl w-20 h-10"><Link to='/Login'>Login</Link></button>
+        <button className="btn bg-white text-black rounded-3xl w-20 h-10"><Link to='/LoginSignup'>Login</Link></button>
     </div>
     </div>
   )
