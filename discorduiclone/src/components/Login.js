@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import qrcode from '../assets/qr_code.png'
 import { FormStateContext } from './Context'
+import { Link } from "react-router-dom"
 
 const Login = () => {
     const {setVisible} = useContext(FormStateContext)
@@ -15,8 +16,10 @@ const Login = () => {
                 <label>PASSWORD</label>
                 <input type="password" name="password" id="password" className="py-2 mb-4 bg-black"/>
                 <p  className='text-[#00b0f4]'>Forgot your password?</p>
+                <Link to="/Dashboard">
                 <button className='bg-[#404eed] py-2 my-4 w-72'>Login</button>
-                <p>Need an account?<span className='text-[#00b0f4]' onClick={()=>{setVisible("signup")}}> Register</span></p>
+                </Link>
+                <p>Need an account?<span className='text-[#00b0f4] cursor-pointer' onClick={()=>{setVisible("signup")}}> Register</span></p>
             </div>
             <div className='text-white p-6 text-center space-y-3 mt-8'>
                 <div className='bg-white py-3 px-2 rounded-md w-48 mx-auto'>
