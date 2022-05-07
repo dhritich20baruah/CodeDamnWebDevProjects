@@ -7,6 +7,7 @@ import Download from '../assets/download_green.png'
 import Friends from '../assets/friends.png'
 import Nitro from '../assets/nitro_icon.png'
 import NoOnline from '../assets/no_online_friends.svg'
+import stageDiscovery from '../assets/stage_discovery.png'
 
 const Dashboard = () => {
     return (
@@ -31,7 +32,7 @@ const Dashboard = () => {
             <div className='bg-[#2f3136] h-[100vh]'>
                 <input type="text" placeholder="Find or start a conversation" className='bg-[#202225] my-4 mx-2 w-64 p-2' />
                 <p className='bg-[#4f545c] m-2 flex p-2 text-white'><img src={Friends} alt="Friends" className='h-6 mr-3' />Friends</p>
-                <p className='text-[#72767d] p-2 flex'>Stage Discovery</p>
+                <p className='text-[#72767d] p-2 flex'><img src={stageDiscovery} alt="Friends" className='h-6 mr-3' />Stage Discovery</p>
                 <p className='text-[#72767d] p-2 flex'><img src={Nitro} alt="Nitro" className='h-6 mr-3'/>Nitro</p>
                 <p className='text-[#72767d] p-2'>DIRECT MESSAGES <span className='text-white text-3xl ml-24'>+</span></p>
                 <div className='flex p-2'>
