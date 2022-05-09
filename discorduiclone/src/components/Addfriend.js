@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Addfriend = () => {
   return (
@@ -7,7 +8,9 @@ const Addfriend = () => {
         <p className='text-[#b9bbbe]'>You can add a friend with their Discord Tag. It's cAsE sEnSitIvE!</p>
         <div className='w-[90%] h-12 bg-[#2f3136]'>
             <input type="text" placeholder="Enter a Username#0000" className='h-12 w-4/6 bg-[#23272a] p-2'/>
+            <Link to="/Server1">
             <button className='bg-[#404eed] w-44 h-8 ml-4 rounded-lg text-white'>Send Friend Request</button>
+            </Link>
         </div>
     </div>
   )

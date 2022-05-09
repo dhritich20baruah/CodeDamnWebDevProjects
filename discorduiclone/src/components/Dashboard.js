@@ -9,7 +9,9 @@ import Nitro from '../assets/nitro_icon.png'
 import NoOnline from '../assets/no_online_friends.svg'
 import stageDiscovery from '../assets/stage_discovery.png'
 import Addfriend from './Addfriend'
-import Pending from '../assets/pending_users_icon.svg'
+import Pending from '../assets/all_users_icon.svg'
+import { Link } from "react-router-dom"
+
 
 const Dashboard = () => {
     const [searchVisible, setSearchVisible] = useState(false)
@@ -22,7 +24,9 @@ const Dashboard = () => {
         <div className='flex'>
             <div className='flex flex-col bg-[#202225] h-[100vh] space-y-5 p-3'>
                 <div className="bg-[#2f3136] rounded-2xl h-16 w-16">
+                    <Link to='/'>
                     <img src={DiscordMiniIcon} alt="miniIcon" className='h-16 w-16 rounded-2xl' />
+                    </Link>
                 </div>
                 <div className="bg-[#2f3136] rounded-2xl h-16 w-16">
                     <img src={NewLine} alt="newLine" className='h-16 w-16 rounded-2xl' />
@@ -57,7 +61,7 @@ const Dashboard = () => {
                         <li className='text-[#b9bbbe] p-2'>All</li>
                         <li className='text-[#b9bbbe] p-2'>Pending</li>
                         <li className='text-[#b9bbbe] p-2'>Blocked</li>
-                        <li className='text-white bg-[#3ba55d] p-2 rounded-2xl' onClick={toggleButton}>Add Friend</li>
+                        <li className='text-white bg-[#3ba55d] p-2 cursor-pointer rounded-2xl' onClick={toggleButton}>Add Friend</li>
                     </ul>
                 </div>
                 <div className='flex'>
