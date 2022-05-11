@@ -7,7 +7,7 @@ const Login = () => {
     const {setVisible} = useContext(FormStateContext)
 
     return (
-        <div className='bg-[#36393f] flex w-[43vw] h-[55vh] rounded-lg mt-24'>
+        <div className='bg-[#36393f] flex md:w-[43vw] md:h-[55vh] rounded-lg mt-24 w-[100vh] h-100[100vh]'>
             <div className='text-[#dcddde] p-5 flex flex-col'>
                 <h2 class="text-3xl text-white">Welcome back!</h2>
                 <p className='py-3'>We're so excited to see you again!</p>
@@ -21,7 +21,7 @@ const Login = () => {
                 </Link>
                 <p>Need an account?<span className='text-[#00b0f4] cursor-pointer' onClick={()=>{setVisible("signup")}}> Register</span></p>
             </div>
-            <div className='text-white p-6 text-center space-y-3 mt-8'>
+            <div className='text-white p-6 text-center space-y-3 mt-8 hidden md:visible'>
                 <div className='bg-white py-3 px-2 rounded-md w-48 mx-auto'>
                 <img src={qrcode} alt="qrcode" className='mx-auto'/>
                 </div>
