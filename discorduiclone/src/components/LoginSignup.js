@@ -10,7 +10,7 @@ const LoginSignup = () => {
   const [visible, setVisible] = useState("login")
   return (
     <div className='h-[100vh] flex align-middle justify-center'  style={{"background": `url(${Loginbg})`}}>
-      <Link to='/'><img src={Discordlogo} alt="logo" className='mt-4'/>
+      <Link to='/'><img src={Discordlogo} alt="logo" className='hidden md:block mt-4'/>
         </Link>
       <FormStateContext.Provider value={{visible, setVisible}}>
         {visible === "login" && <Login/>}
