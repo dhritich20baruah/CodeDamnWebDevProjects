@@ -15,10 +15,7 @@ import youtube from '../assets/youtube_icon.svg'
 import insta from '../assets/instagram_icon.svg'
 import facebook from '../assets/facebook_icon.svg'
 
-
-
 const Home = () => {
-  
   return (
     <>
     {<Nav/>}
