@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ 
+}
+#calculator-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    background-color: azure; 
+}
+input{
+    border: none;
+    height: 7em;
+    width: 11.8em;
+    background-color: cornflowerblue;
+    font-size: 2em;
+}
+table{
+    width: 20em;
+    height: 20em;
+    background-color: cornflowerblue;
+    border-top: 1px solid black;
+    font-size: 1.2em;
+    font-family: Poppins;
+}
+td{
+    text-align: center;
+}
