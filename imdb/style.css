@@ -1,3 +1,135 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background-color: black;
+}
+
+input[type=radio]{
+    accent-color: rgb(253, 253, 10);
+}
+
+/* CSS for the main menu */
+.slideUp{
+    animation-name: slideUp;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideUp{
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}
+
+.slideDown{
+    animation-name: slideDown;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideDown{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/* Search options */
+.showSearch{
+    animation-name: showSearch;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes showSearch{
+    0%{
+        transform: translate(-50%, -50%) scale(0,0);
+    }
+    100%{
+        transform: translate(0, 0) scale(1,1);
+    }
+}
+
+.hideSearch{
+    animation-name: hideSearch;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes hideSearch{
+    0%{
+        transform: translate(0, 0) scale(1,1);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(0,0);
+    }
+}
+
+/* Language options */
+.showLanguage{
+    animation-name: showLanguage;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes showLanguage{
+    0%{
+        transform: translate(50%, -50%) scale(0,0);
+    }
+    100%{
+        transform: translate(0, 0) scale(1,1);
+    }
+}
+
+.hideLanguage{
+    animation-name: hideLanguage;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes hideLanguage{
+    0%{
+        transform: translate(0, 0) scale(1,1);
+    }
+    100%{
+        transform: translate(50%, -50%) scale(0,0);
+    }
+}
+
+/* CSS for the side menu */
+.slideIn{
+    animation-name: slideIn;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideIn{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.slideOut{
+    animation-name: slideOut;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideOut{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
