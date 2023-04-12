@@ -1,0 +1,31 @@
+body {
+	padding: 10px;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	line-height: 1.6;
+	font-size: 18px;
+}
+#functionbtns{
+	display: flex;
+	flex-direction: column;
+	width: 10em;
+}
+#functionbtns button{
+	margin: 0.5em;
+	height: 2em;
+	background-color: indigo;
+	color: white;
+	border: none;
+}
+#functionbtns button:hover{
+	color: indigo;
+	background-color: white;
+	box-shadow: 0 0 2px indigo;
+}
+#time{
+	background-color: #FF6600;
+	padding: 1em;
+	color: white;
+	font-weight: bold;
+}

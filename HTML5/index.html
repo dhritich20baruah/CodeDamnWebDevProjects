@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codedamn HTML5 CSS3</title>
+</head>
+<style>
+    input{
+        display: block;
+    }
+    /* Specificity of 1+1 =2 */
+    div p{
+        color: red
+    }
+    /* Specificity 100 */
+    #p-tag{
+        color: blue;
+    }
+    /* specificity 10 */
+    .p-tag-class{
+        color: green;
+    }
+    *{
+        box-sizing: border-box
+    }
+    #border{
+        border: 5px solid black;
+        padding: 10px;
+        margin: 15px;
+        width: 20em;
+        height: 10em;
+        color: white;
+    }
+    html{
+        --bgcolor: green;
+        --bgdiv: red;
+        --h1-font-size: calc(var(--standard-font-size)*2    )
+    }
+    #border{
+        background: var(--bgdiv, yellow)
+        /* yellow fallback if the first value is not set  */
+    }
+    body{
+        background-color: var(--bgcolor);
+    }
+    h1{
+        font-size: calc(32px + 10vw)
+    }
+    p{
+        font-size: var(--h1-font-size);
+    }
+</style>
+<body>
+    <p>Paragraph with &nbsp; spaces.</p>
+    <pre>Paragraph with    spaces.</pre>
+    <!-- for copyright -->
+    <p>Paragraph with &copy; spaces.</p>
+    <!-- greater than and less than -->
+    <p>&lt;p&gt; is the paragraph tag</p>
+    <input type="text" minlength="3" maxlength="10">
+    <input type="file" name="file" id="file">
+    <input type="color" name="color" id="color">
+    <input type="search" name="search" id="search">
+    <input type="range" min="2" max="100" step="30">
+    <input type="datetime-local">
+    <input type="radio" name="select">On
+    <input type="radio" name="select">Off
+    <!-- <iframe src="http://peridibrugarh.online/" frameborder="0"></iframe> -->
+
+    <div id="border">
+        <p>when border box is applied the div is confined to only the width and height. If not applied it will also contain the padding.</p>
+    </div>
+
+    <script src="./es6.mjs"></script>
+</body>
+</html>
+
+<p

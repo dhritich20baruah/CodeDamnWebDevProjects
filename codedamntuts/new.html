@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 >Counter: <span id="counter">0</span></h2>
+    <button id="increment">Increment</button>
+    <button id="decrement">decrement</button>
+
+    <ul id="list-items">
+
+    </ul>
+
+<div>
+    <h1>Countdown</h1>
+    <input type="number" max="59" min="0" id="minutes"> :
+    <input type="number" max="59" min="0" id="seconds"> 
+    <div id="display"></div>
+    <button id="btn">Submit</button>
+</div>
+
+<script>
+    let minutes = document.getElementById('minutes')
+    let seconds = document.getElementById('seconds')
+    let display = document.getElementById('display')
+    let btn = document.getElementById('btn')
+    display.innerHTML = "hello"
+    let x = seconds.value
+    function countdown(){timer = setInterval(()=>{
+        if(x>0){
+            x -= 1;
+            console.log(x)
+            display.innerHTML = x
+        }
+    }, 1000)
+    }
+    btn.addEventListener('click', countdown)
+
+</script>
+
+<script src="ex.js"></script>
+<script src="/codedamn.js"></script>
+    
+</body>
+</html>
