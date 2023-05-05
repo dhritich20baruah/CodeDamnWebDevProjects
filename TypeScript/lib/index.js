@@ -1,5 +1,4 @@
 "use strict";
-//npx tsc --watch
 let message = "Hello World";
 console.log(message);
 //Primitive types
@@ -10,16 +9,14 @@ let str = "Hello World"; //string
 let notDefined = undefined;
 let notPresent = null;
 let penta = Symbol('star'); //Globally unique identifiers 
-// let biggy: bigint = 24n //Arbitarily large numbers
+let biggy = 24n; //Arbitarily large numbers
 //Instance type
 let regexp = new RegExp('ab+c');
 let array = [1, 2, 3];
 let set = new Set([1, 2, 3]);
 //A first in first out collection
 class Queue {
-    constructor() {
-        this.data = [];
-    }
+    data = [];
     push(item) { this.data.push(item); }
     pop() { return this.data.shift(); }
 }
@@ -81,6 +78,8 @@ function takespt2d(point) { }
 takespt2d(point3d);
 //CLASS
 class Animal {
+    name;
+    horn;
     constructor(name, horn) {
         this.name = name,
             this.horn = horn;
@@ -98,3 +97,45 @@ class Bird extends Animal {
         console.log(`${this.name}  moved ${distance} mtrs.`);
     }
 }
+//GENERICS
+// class Queue1<T>{
+//     data = []
+//     push(item) {this.data.push(item)}
+//     pop(): T { return this.data.shift()}
+// }
+// class NumberQueue extends Queue {
+//     push(item: number) { super.push(item);}
+//     pop(): number{ return super.pop()}
+// }
+// const queue1 = new Queue1<number>()
+// queue.push(123)
+//Special Types: any and unknown
+let exampleAny;
+let exampleUnknown;
+//any
+exampleAny = 123;
+exampleAny = 'Hello';
+//Unknown
+exampleUnknown = 123;
+exampleUnknown = 'World';
+//any - it bypasses everything that typescript stands for
+exampleAny.allows.anything.you.can.imagine();
+let anySetBool = exampleAny;
+//unknown - safer than any
+if (typeof exampleUnknown == 'string') {
+    exampleUnknown.trim();
+}
+if (typeof exampleUnknown == 'boolean') {
+    let unknownSetBool = exampleUnknown;
+}
+//Universal Utilities
+function util(value) {
+    if (typeof value == 'number') {
+        console.log(value.toFixed(2));
+    }
+    else {
+        console.log(value);
+    }
+}
+util(123.456);
+util('hello world');

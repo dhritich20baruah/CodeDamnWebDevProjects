@@ -11,7 +11,7 @@ let notDefined: undefined = undefined
 let notPresent: null = null
 
 let penta: symbol = Symbol('star') //Globally unique identifiers 
-// let biggy: bigint = 24n //Arbitarily large numbers
+let biggy: bigint = 24n //Arbitarily large numbers
 
 //Instance type
 let regexp: RegExp = new RegExp('ab+c')
@@ -134,3 +134,55 @@ class Bird extends Animal{
         console.log(`${this.name}  moved ${distance} mtrs.`)
     }
 }
+
+//GENERICS
+// class Queue1<T>{
+//     data = []
+//     push(item) {this.data.push(item)}
+//     pop(): T { return this.data.shift()}
+// }
+
+// class NumberQueue extends Queue {
+//     push(item: number) { super.push(item);}
+//     pop(): number{ return super.pop()}
+// }
+
+// const queue1 = new Queue1<number>()
+// queue.push(123)
+
+//Special Types: any and unknown
+let exampleAny: any;
+let exampleUnknown: unknown;
+
+//any
+exampleAny = 123;
+exampleAny = 'Hello'
+
+//Unknown
+exampleUnknown = 123
+exampleUnknown = 'World'
+
+//any - it bypasses everything that typescript stands for
+exampleAny.allows.anything.you.can.imagine()
+let anySetBool: boolean = exampleAny
+
+//unknown - safer than any
+if (typeof exampleUnknown == 'string'){
+    exampleUnknown.trim()
+}
+
+if (typeof exampleUnknown == 'boolean'){
+    let unknownSetBool: boolean = exampleUnknown
+}
+
+//Universal Utilities
+function util(value: unknown){
+    if (typeof value == 'number'){
+        console.log(value.toFixed(2))
+    } else {
+        console.log(value)
+    }
+}
+
+util(123.456)
+util('hello world')
