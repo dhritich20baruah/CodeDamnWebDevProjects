@@ -186,3 +186,75 @@ function util(value: unknown){
 
 util(123.456)
 util('hello world')
+
+//Type Asertions
+function load(arg: string){
+    return "Hello s" + arg
+}
+let hello = load("Dhriti")
+
+if (typeof hello === 'string'){
+    const trimmed = hello.trim()
+    console.log(trimmed)
+}
+
+//Type casting
+let leet
+
+leet = '1337'
+
+const number = +leet
+
+console.log(number === 1337)
+console.log(number)
+
+//MODULES
+import { isPalindrome } from "./palindrome"
+
+console.log(isPalindrome('madam'))
+console.log(isPalindrome('madan'))
+
+//Types declaration
+console.log(
+    'Logged in user:',
+    process.env.USER
+)
+
+//To declare environment variables install @types/node for express install @types/express
+
+import fs from 'fs'
+fs.writeFileSync('hello.txt', 'Hello World')
+
+const express = require('express')
+const app = express()
+app.get('/', function(req, res){
+    res.send('Hello')
+})
+app.listen(3000, ()=>{
+    console.log('server started')
+})
+
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
+
+const mainAsync = async () => {
+    await delay(1000);
+    console.log('1s');
+    await delay(1000);
+    console.log('2s');
+    await delay(1000);
+    console.log('3s');
+}
+
+const main = () => {
+    setTimeout(()=>{
+        console.log('1s')
+        setTimeout(()=>{
+            console.log('2s')
+            setTimeout(()=>{
+                console.log('3s')
+            }, 1000)
+        }, 1000)
+    }, 1000)
+}
+
+//ts-node package that runs typescript locally

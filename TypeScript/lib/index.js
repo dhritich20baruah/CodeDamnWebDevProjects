@@ -1,4 +1,8 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 let message = "Hello World";
 console.log(message);
 //Primitive types
@@ -139,3 +143,56 @@ function util(value) {
 }
 util(123.456);
 util('hello world');
+//Type Asertions
+function load(arg) {
+    return "Hello s" + arg;
+}
+let hello = load("Dhriti");
+if (typeof hello === 'string') {
+    const trimmed = hello.trim();
+    console.log(trimmed);
+}
+//Type casting
+let leet;
+leet = '1337';
+const number = +leet;
+console.log(number === 1337);
+console.log(number);
+//MODULES
+const palindrome_1 = require("./palindrome");
+console.log((0, palindrome_1.isPalindrome)('madam'));
+console.log((0, palindrome_1.isPalindrome)('madan'));
+//Types declaration
+console.log('Logged in user:', process.env.USER);
+//To declare environment variables install @types/node for express install @types/express
+const fs_1 = __importDefault(require("fs"));
+fs_1.default.writeFileSync('hello.txt', 'Hello World');
+const express = require('express');
+const app = express();
+app.get('/', function (req, res) {
+    res.send('Hello');
+});
+app.listen(3000, () => {
+    console.log('server started');
+});
+const delay = (ms) => new Promise(res => setTimeout(res, ms));
+const mainAsync = async () => {
+    await delay(1000);
+    console.log('1s');
+    await delay(1000);
+    console.log('2s');
+    await delay(1000);
+    console.log('3s');
+};
+const main = () => {
+    setTimeout(() => {
+        console.log('1s');
+        setTimeout(() => {
+            console.log('2s');
+            setTimeout(() => {
+                console.log('3s');
+            }, 1000);
+        }, 1000);
+    }, 1000);
+};
+//ts-node package that runs typescript locally
