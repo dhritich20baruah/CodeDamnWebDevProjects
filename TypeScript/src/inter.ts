@@ -153,3 +153,86 @@ function rollDice(){
 if (rollDice() === 7){
     throw new Error('not possible')
 }
+
+//Discriminated Unions
+type Squares = {
+    kind: 'square',
+    size: number
+}
+
+type Rectangles = {
+    kind: 'rectangle',
+    width: number,
+    height: number
+}
+
+type Shapes = Squares | Rectangles
+
+function areas(shapes: Shapes){
+    if(shapes.kind === 'square'){
+        return shapes.size * shapes.size
+    }
+    if(shapes.kind === 'rectangle'){
+        return shapes.width * shapes.height
+    }
+}
+
+type ValidationSuccess = {
+    isValid: true,
+    validatedValue: string
+}
+
+type ValidationFailure = {
+    isValid: false,
+    errorReason: string
+}
+
+type validationResult = 
+    | ValidationSuccess
+    | ValidationFailure
+
+function logResult(result: validationResult){
+    if(result.isValid){
+        console.log('Success, validated value:', result.validatedValue)
+    }
+    if(result.isValid === false){
+        console.log('Failure, error reason:', result.errorReason)
+    }
+}
+
+//Class Parameter Properties
+class Persons {
+    constructor(
+        public name: string,  //Constructor
+        public age: number
+    ) {
+    }
+}
+
+const adam = new Persons('Adam', 12000000);
+console.log(adam.name, adam.age)
+
+//null versus undefined
+console.log(null == null) //true
+console.log(undefined == undefined) //true
+
+
+console.log(undefined == null) //true
+
+
+console.log(false == null) //false
+console.log(0 == null) //false
+console.log('' == null) //false
+
+function decorate(value: string | null | undefined){
+    if (value == null){
+        return value
+    }
+    return `--${value.trim()}--`
+}
+
+console.log(decorate('Hello'))
+console.log(decorate('Hello World '))
+
+console.log(decorate(null))
+console.log(decorate(undefined))
