@@ -236,3 +236,132 @@ console.log(decorate('Hello World '))
 
 console.log(decorate(null))
 console.log(decorate(undefined))
+
+//intersection types
+type Point2D1 = {
+    x: number,
+    y: number
+};
+
+type Point3D1 = Point2D1 & {
+    z: number
+}
+
+type Person1 = {
+    name: string
+}
+
+type Email1 = {
+    email: string
+}
+
+type Phone1 = {
+    phone: string
+}
+
+type ContactDetails = 
+    & Person1
+    & Email1
+    & Phone1
+
+function contact(details: ContactDetails){
+    console.log(`Dear ${details.name}.
+    I hope you have saved our ${details.email} and ${details.phone}`)
+}
+
+contact({
+    name: 'John',
+    email: "john@email.com",
+    phone: '1234'
+})
+
+//OPTIONAL MODIFIER
+type Person2 = {
+    name: string,
+    email: string,
+    phone?: string, //optional modifier
+}
+
+const bruce: Person2 = {
+    name: 'Bruce',
+    email: 'b@email.com',
+    phone: '124',
+}
+
+const alfred: Person2 = {
+    name: 'Alfred',
+    email: 'alfred@email.com', //providing the phone number is optional
+}
+
+console.log(alfred.phone) //Will return undefined
+
+class Point2 {
+    x?: number | null;
+    y?: number;
+}
+
+const point2 = new Point2()
+
+console.log(point2.x)
+
+point2.x = 0;
+point2.x = undefined;
+point2.x = null //error as null is not added as explicit annotation as shown above
+
+//Non null assertion operator
+type Point3 = {
+    x: number,
+    y: number,
+}
+
+let point3: Point3;
+function initialize() {
+    point3 = {x: 0, y: 0}
+}
+
+initialize();
+console.log('After initialized', point3!.x, point3!.y) //! mark is known as non null assertion they are used in compile time only not in run time so they should be avoided.
+
+//To avoid the non null assertions the above code should be written as follows
+type Point3s = {
+    x: number,
+    y: number,
+}
+
+function initialize2(): Point3s {
+    return {x: 0, y: 0}
+}
+
+const point3s = initialize2();
+console.log('After initialized', point3s.x, point3s.y) 
+
+//interfaces
+// type Point2D2 = {
+//     x: number,
+//     y: number,
+// }
+
+// type Point3D2 = Point2D2 & {
+//     z: number,
+// }
+
+// export const point4: Point3D2 = {
+//     x: 0,
+//     y: 0,
+//     z: 0,
+// } 
+
+interface Point2D2  {
+    x: number,
+    y: number,
+}
+
+interface Point3D2 extends Point2D2  {
+    z: number,
+}
+
+export const point4: Point3D2 = {
+    x: 0,
+    y: 0,
+    z: 0,
+} 
