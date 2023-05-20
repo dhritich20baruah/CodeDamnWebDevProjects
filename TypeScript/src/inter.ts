@@ -365,3 +365,38 @@ export const point4: Point3D2 = {
     y: 0,
     z: 0,
 } 
+//Never
+type Square1 = {
+    kind: 'square',
+    size: number,
+}
+
+type Rectangle1 = {
+    kind: 'rectangle',
+    width: number,
+    height: number,
+}
+
+type Circle1 = {
+    kind: 'circle',
+    radius: number
+}
+
+type Shape1 =
+    | Square1
+    | Rectangle1
+    | Circle1
+
+function area1(s: Shape1){
+    if (s.kind === 'square'){
+        return s.size * s.size
+    }
+    else if (s.kind === 'rectangle'){
+        return s.width * s.height
+    }
+    else if (s.kind === 'circle'){
+        return Math.PI * (s.radius ** 2)
+    }
+    const _ensureAllCasesAreHandled: never = s;
+    return _ensureAllCasesAreHandled
+}
