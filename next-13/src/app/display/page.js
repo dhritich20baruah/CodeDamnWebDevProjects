@@ -1,18 +1,17 @@
 import "../../app/globals.css";
-import React from "react";
 const mongoose = require("mongoose");
-const Todos = require("../../../model/Todo");
+import Todo from "../../../model/Todo";
+import DeleteBtn from "@/components/DeleteBtn";
+import Link from "next/link";
 
+console.log('hello')
 export default async function Display() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/nextJS13CRUD", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  const todos = await Todos.find();
-
-  async function deleteTodo(id){
-    await Todo.deleteTodo({_id:id})
-  }
+  mongoose
+    .connect("mongodb://127.0.0.1:27017/nextJS13CRUD", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+  const todos = await Todo.find();
   return (
     <div className="container">
       <table className="table">
@@ -29,9 +28,11 @@ export default async function Display() {
               <tr key={element._id}>
                 <td>{element.title}</td>
                 <td>{element.todo}</td>
-                <td>
-                  <button className="btn btn-danger" >Delete</button>
+                <td className="d-flex">
+                  <DeleteBtn id={element._id} />
+                  <Link href='/edit'>
                   <button className="btn btn-primary">Edit</button>
+                  </Link>
                 </td>
               </tr>
             );

@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
 import Todo from '../../model/Todo'
+import {redirect} from 'next/navigation'
 
 export default function Home() {
  
   async function newTodo(data){
    "use server"
-   const title = data.get('title')?.valueOf()
-   const todo = data.get('todo')?.valueOf()
+   let title = data.get('title')?.valueOf()
+   let todo = data.get('todo')?.valueOf()
 
 
    try{
@@ -17,12 +18,13 @@ export default function Home() {
 
     var newTodo = new Todo({title, todo})
     await newTodo.save()
-    console.log(newTodo)
    }
    catch(error){
     console.log(error)
     res.status(500).json({error: "Internal Server Error"})
    }
+   redirect("/")
+
   }
   return (
     <>
@@ -30,7 +32,7 @@ export default function Home() {
         <h1>Create Todo</h1>
         <form action={newTodo}>
         <div className="mb-3">
-          <label for="exampleFormControlInput1" className="form-label">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Title
           </label>
           <input
@@ -41,7 +43,7 @@ export default function Home() {
           />
         </div>
         <div className="mb-3">
-          <label for="exampleFormControlTextarea1" className="form-label">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Todo
           </label>
           <textarea
