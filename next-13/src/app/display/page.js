@@ -4,7 +4,6 @@ import Todo from "../../../model/Todo";
 import DeleteBtn from "@/components/DeleteBtn";
 import Link from "next/link";
 
-console.log('hello')
 export default async function Display() {
   mongoose
     .connect("mongodb://127.0.0.1:27017/nextJS13CRUD", {
@@ -30,7 +29,7 @@ export default async function Display() {
                 <td>{element.todo}</td>
                 <td className="d-flex">
                   <DeleteBtn id={element._id} />
-                  <Link href='/edit'>
+                  <Link href={'/Edit/'+element._id}>
                   <button className="btn btn-primary">Edit</button>
                   </Link>
                 </td>

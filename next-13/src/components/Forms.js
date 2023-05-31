@@ -1,7 +1,12 @@
-export default function Edit(){
+'use client'
+import React, {useState} from 'react'
+
+const Forms = (props) => {
+    const {title, todo} = props
+    const [newTitle, setNewTitle] = useState(title)
+    const [newTodo, setNewTodo] = useState(todo)
+
     return(
-        <div className="container">
-        <h1>Edit Todo</h1>
         <form>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -12,6 +17,7 @@ export default function Edit(){
             className="form-control"
             name="title"
             id="exampleFormControlInput1"
+            value={newTitle}
           />
         </div>
         <div className="mb-3">
@@ -23,10 +29,12 @@ export default function Edit(){
             id="exampleFormControlTextarea1"
             rows="3"
             name="todo"
+            value={newTodo}
           ></textarea>
         </div>
         <button type="submit" className="btn btn-primary">SUBMIT</button>
         </form>
-      </div>
     )
 }
+
+export default Forms
