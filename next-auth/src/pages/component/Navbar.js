@@ -9,6 +9,9 @@ export default function Navbar(){
                 <Link href="/Display">
                 <li className="hover:cursor-pointer hover:text-red-600">Show</li>
                 </Link>
+                <Link href="/Login">
+                <li className="hover:cursor-pointer hover:text-red-600">Login</li>
+                </Link>
             </ul>
         </div>
     )

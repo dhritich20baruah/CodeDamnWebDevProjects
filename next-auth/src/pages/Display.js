@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { useSession, signOut } from 'next-auth/react'
+
 
 export async function getStaticProps() {
+
   const mongoose = require("mongoose");
   const Todos = require("../../model/Todo");
 
@@ -19,6 +22,8 @@ export async function getStaticProps() {
 }
 
 const Display = ({ todos }) => {
+  const {data: session, status} = useSession({required: true})
+
   const [visibility, setVisibility] = useState(false);
   const [title, setTitle] = useState("");
   const [todo, setTodo] = useState("");
@@ -48,6 +53,7 @@ const Display = ({ todos }) => {
     });
   };
 
+  if(status === 'authenticated'){
   return (
     <>
       <div className="m-10 space-y-5">
@@ -133,6 +139,13 @@ const Display = ({ todos }) => {
       )}
     </>
   );
+}else {
+  return(
+  <div>
+      <p>You are not signed in.</p>
+  </div>
+  )
+}
 };
 
 export default Display;
