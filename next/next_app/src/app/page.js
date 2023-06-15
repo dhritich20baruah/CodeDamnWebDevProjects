@@ -3,7 +3,6 @@ import Todo from './model/Todo'
 import mongoose from 'mongoose'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
-
 export default async function Home() {
   await mongoose.connect("mongodb://127.0.0.1:27017/NextJSTodo",{
     useNewUrlParser: true,
@@ -33,7 +32,7 @@ export default async function Home() {
         <br />
         <input type="text" name="todo" id="todo" className='border-black border-2 p-2'/>
         <br />
-        <button type="submit" className='p-2 bg-yellow-500 hover:bg-orange-500'>SUBMIT</button>
+        <button type="submit" className='p-2 bg-yellow-500 hover:bg-orange-500' >SUBMIT</button>
       </form>
 
       <div className="m-3 text-center">
