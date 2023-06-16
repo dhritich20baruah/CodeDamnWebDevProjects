@@ -99,3 +99,17 @@ console.log('Name:', maybePerson.name)
 
 assertDate(maybePerson.dateOfBirth)
 console.log('Date of Birth', maybePerson.dateOfBirth.toISOString())
+
+//Function 
+function reverse(string: string): string;
+function reverse(stringArr: string[]): string[];
+function reverse(strOrStrArr: string | string[]){
+    if (typeof strOrStrArr == 'string'){
+        return strOrStrArr.split('').reverse().join('')
+    } else {
+        return strOrStrArr.slice().reverse()
+    }
+}
+
+const hello = reverse('hello')
+const h_e_l_l_o = reverse(['h', 'e', 'l', 'l', 'o'])
