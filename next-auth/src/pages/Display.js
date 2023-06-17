@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { useSession, signOut } from 'next-auth/react'
-
+import PageButtons from "./component/PageButtons";
+// import { useSession, signOut, getSession } from 'next-auth/react'
 
 export async function getStaticProps() {
 
@@ -12,8 +12,20 @@ export async function getStaticProps() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  const todos = await Todos.find().sort({ createdAt: "desc" });
-  console.log(todos);
+
+  let page = 0
+  let items = 3
+
+  function nextPage(){
+    page = page + 1
+  }
+ 
+  const todos = await Todos
+  .find()
+  .sort({ createdAt: "desc" })
+  .skip(page * items)
+  .limit(items);
+  
   return {
     props: {
       todos: JSON.parse(JSON.stringify(todos)),
@@ -22,7 +34,8 @@ export async function getStaticProps() {
 }
 
 const Display = ({ todos }) => {
-  const {data: session, status} = useSession({required: true})
+  // const {data: session, status} = useSession({required: false})
+  const [pages, setPages] = useState(1)
 
   const [visibility, setVisibility] = useState(false);
   const [title, setTitle] = useState("");
@@ -53,10 +66,11 @@ const Display = ({ todos }) => {
     });
   };
 
-  if(status === 'authenticated'){
   return (
     <>
       <div className="m-10 space-y-5">
+        {/* <button className="bg-red-500 p-3" onClick={()=> signOut()}>Sign Out</button> */}
+        <PageButtons/>
         <h1 className="text-xl font-bold">Notes</h1>
         <div>
           <ul className="flex font-bold">
@@ -95,6 +109,7 @@ const Display = ({ todos }) => {
             );
           })}
         </div>
+      
       </div>
       {visibility && (
         <div className="container">
@@ -139,13 +154,27 @@ const Display = ({ todos }) => {
       )}
     </>
   );
-}else {
-  return(
-  <div>
-      <p>You are not signed in.</p>
-  </div>
-  )
-}
+
+  
+//   if(status === 'authenticated'){
+// }else {
+//   return(
+//   <div>
+//       <p>You are not signed in.</p>
+//   </div>
+//   )
+// }
 };
 
 export default Display;
+
+// export const getServerSideProps = async (context) =>{
+//   const session = await getSession(context)
+//   if(!session){
+//     return{
+//       redirect: {
+//         destination: '/login'
+//       }
+//     }
+//   }
+// }
