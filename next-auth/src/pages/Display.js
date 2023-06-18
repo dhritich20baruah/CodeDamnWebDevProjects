@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import PageButtons from "./component/PageButtons";
 // import { useSession, signOut, getSession } from 'next-auth/react'
+import Pagination from "./component/Pagination";
+import Paginate from "./component/Paginate";
 
 export async function getStaticProps() {
 
@@ -13,18 +14,13 @@ export async function getStaticProps() {
     useUnifiedTopology: true,
   });
 
-  let page = 0
-  let items = 3
-
-  function nextPage(){
-    page = page + 1
-  }
  
   const todos = await Todos
   .find()
   .sort({ createdAt: "desc" })
-  .skip(page * items)
-  .limit(items);
+
+  // .skip(page * items)
+  // .limit(items);
   
   return {
     props: {
@@ -35,7 +31,14 @@ export async function getStaticProps() {
 
 const Display = ({ todos }) => {
   // const {data: session, status} = useSession({required: false})
-  const [pages, setPages] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 3
+
+  const onPageChange = (page) => {
+    setCurrentPage(page)
+  }
+
+  const paginatedPosts = Paginate(todos, currentPage, pageSize);
 
   const [visibility, setVisibility] = useState(false);
   const [title, setTitle] = useState("");
@@ -70,7 +73,6 @@ const Display = ({ todos }) => {
     <>
       <div className="m-10 space-y-5">
         {/* <button className="bg-red-500 p-3" onClick={()=> signOut()}>Sign Out</button> */}
-        <PageButtons/>
         <h1 className="text-xl font-bold">Notes</h1>
         <div>
           <ul className="flex font-bold">
@@ -79,7 +81,7 @@ const Display = ({ todos }) => {
             <li className="flex-1">Options</li>
           </ul>
           <hr />
-          {todos.map((element) => {
+          {paginatedPosts.map((element) => {
             return (
               <>
                 <ul key={element._id} className="flex">
@@ -108,6 +110,7 @@ const Display = ({ todos }) => {
               </>
             );
           })}
+               <Pagination items={todos.length} currentPage = {currentPage} pageSize={pageSize} onPageChange={onPageChange}/>
         </div>
       
       </div>
