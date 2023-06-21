@@ -2,8 +2,7 @@ import Todo from "../model/Todo";
 import dbConnect from "../utils/dbConnect";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Paginate from "../utils/Paginate";
-import Pagination from "../components/Pagination";
+
 
 export default async function show() {
   dbConnect();
@@ -19,15 +18,6 @@ export default async function show() {
     redirect("/show");
   }
 
-  //Pagination
-  let currentPage = 1
-  const pageSize = 3
-
-  const onPageChange = (page = currentPage) => {
-    return page
-  }
-  console.log(onPageChange())
-  const paginatedTodos = Paginate(todos, currentPage, pageSize);
 
   return (
     <main className="m-10 space-y-5">
@@ -39,7 +29,7 @@ export default async function show() {
           <li className="flex-1">Options</li>
         </ul>
         <hr />
-        {paginatedTodos.map((element) => {
+        {todos.map((element) => {
           return (
             <>
               <ul className="flex" key={element._id}>
@@ -72,8 +62,7 @@ export default async function show() {
             </>
           );
         })}
-        {/* Pagination */}
-        <Pagination items={todos.length} currentPage = {currentPage} pageSize={pageSize} onPageChange={onPageChange}/>
+ 
       </div>
     </main>
   );

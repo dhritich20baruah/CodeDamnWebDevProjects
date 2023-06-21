@@ -11,6 +11,9 @@ const Navbar = () => {
             <Link href='/show'>
             <li className='hover:cursor-pointer hover:text-red-600'>Show</li>
             </Link>
+            <Link href='/Display'>
+            <li className='hover:cursor-pointer hover:text-red-600'>Display</li>
+            </Link>
         </ul>
     </div>
   )
