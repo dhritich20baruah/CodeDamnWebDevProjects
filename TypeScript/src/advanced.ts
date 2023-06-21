@@ -113,3 +113,49 @@ function reverse(strOrStrArr: string | string[]){
 
 const hello = reverse('hello')
 const h_e_l_l_o = reverse(['h', 'e', 'l', 'l', 'o'])
+
+//Call signatures
+type Add = (a:number, b:number) => number
+// If we use call signatures
+type Add2 = {
+    (a:number, b:number): number,
+    (a:number, b:number, c:number): number,
+    debugName?: string,
+}
+
+const add: Add2 = (a: number, b: number, c?:number) => {
+    return a + b + (c != null ? c: 0)
+}
+add.debugName = 'Addition Function'
+
+type PointCreator = {
+    new (x: number, y: number) : { x: number, y: number}
+} 
+
+const Point: PointCreator = class {
+    constructor(public x: number, public y: number) {}
+}
+
+//Abstract classes
+abstract class Command {
+    abstract commandLine(): string
+
+    execute() {
+        console.log('Executing:', this.commandLine())
+    }
+}
+
+class GitResetCommand extends Command {
+    commandLine() {
+        return 'git reset --hard'
+    }
+}
+
+class GitFetchCommand extends Command {
+    commandLine() {
+        return 'git fetch --hard'
+    }
+}
+
+new GitResetCommand().execute()
+new GitFetchCommand().execute()
