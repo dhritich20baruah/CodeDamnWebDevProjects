@@ -159,3 +159,42 @@ class GitFetchCommand extends Command {
 
 new GitResetCommand().execute()
 new GitFetchCommand().execute()
+
+//index signatures
+const strs = {
+    hello: 'world'
+}
+
+console.log(strs['hello'])
+
+const nums = {
+    1337: 'leet'
+}
+
+console.log(nums[1337])
+
+type Dictionary = {
+    [key: string] : boolean
+}
+
+type Person1 = {
+    displayName: string,
+    email: string
+}
+
+type Person1Dictionary = {
+    [username: string]: Person1
+}
+
+const persons: Person1Dictionary = {
+    jane: {displayName: 'Jane Doe', email: 'jane@email.com'}
+}
+
+persons['john'] = {displayName: 'John Doe', email: 'john@email.com'}
+
+console.log(persons['john'])
+
+delete persons['john']
+
+const result = persons['missing']
+console.log(result, result.email) //undefined
