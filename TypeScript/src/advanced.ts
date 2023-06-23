@@ -198,3 +198,28 @@ delete persons['john']
 
 const result = persons['missing']
 console.log(result, result.email) //undefined
+
+//Readonly Arrays and Tuples
+function reverseSorted(input: readonly number[]): number[]{
+    return input.slice().sort().reverse(); //sort and reverse method in addition to returning the result also mutate the array to counter this in ts we can declare the number array as a readonly array but sort will not be available now so for before sort we need to use the slice method.
+}
+
+const start = [1,2,3,4,5]
+const result2 = reverseSorted(start)
+
+console.log(result2) //[5,4,3,2,1]
+console.log(start) //[5,4,3,2,1]
+
+type Neat = readonly number[]
+type Long = ReadonlyArray<number>
+
+type Point = readonly [number, number]
+ function move(point: Point, x: number, y: number): Point {
+    return [point[0] + x, point[1] + y]
+ }
+
+ const point: Point = [0,0]
+ const moved = move(point, 10, 10)
+
+ console.log(moved) //[10,10]
+ console.log(point) //[0,0]
