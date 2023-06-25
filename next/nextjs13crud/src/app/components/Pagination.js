@@ -20,7 +20,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
             key={page}
           >
             <a
-              // onClick={() => onPageChange(page)}
+              onClick={() => onPageChange(page)}
               className="pagelink hover:cursor-pointer"
             >
               {page}
