@@ -10,8 +10,7 @@ export const POST = async (req, res) => {
     quote
   });
   await newQuote.save();
-  console.log(newQuote);
-  return NextResponse.json(newQuote);
+  return NextResponse.json({message: "Quote Added"});
 };
 
 export const GET = async (req, res) => {

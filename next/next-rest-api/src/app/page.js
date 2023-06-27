@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Axios from "axios";
+import Paginate from "./display/components/Paginate";
+import Pagination from "./display/components/Pagination";
+
 
 export default function Home() {
   //Post quotes
@@ -10,6 +13,8 @@ export default function Home() {
   const [quoteId, setQuoteId] = useState("");
   const [quotesArr, setQuotesArr] = useState([]);
   const [visibility, setVisibility] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  
   const handleSubmit = async () => {
     const quoteObj = {
       quote: quote,
@@ -32,6 +37,12 @@ export default function Home() {
   };
   getQuotes();
 
+  const pageSize = 3
+  const onPageChange = (page) => {
+    setCurrentPage(page)
+  }
+
+  const paginatedQuotes = Paginate(quotesArr, currentPage, pageSize);
   //Delete Quotes
   const deleteQuotes = async (id) => {
     await Axios.delete(`http://localhost:3000/api/quotes/${id}`).then(() => {
@@ -79,29 +90,29 @@ export default function Home() {
         </button>
       </form>
       <div className="my-10">
-        {quotesArr.map((element) => {
+        {paginatedQuotes.map((element) => {
           return (
             <ul key={element._id} className="flex justify-between">
-              <li>{element.quote}</li>
-              <li>
-                <i
-                  className="material-icons mx-1 text-red-600 p-1 hover:cursor-pointer hover:bg-slate-400"
+              <li className="w-[90%]">{element.quote}</li>
+              <li className="w-[10%] flex">
+                <button
+                  className="mx-1 text-red-600 p-1 border-2 border-red-600 hover:cursor-pointer hover:bg-red-400 hover:text-white rounded-md"
                   onClick={() => deleteQuotes(element._id)}
                 >
-                  delete
-                </i>
-                <i
-                  className="material-icons mx-1 text-green-600 p-1 hover:cursor-pointer hover:bg-slate-400"
+                  Delete
+                </button>
+                <button
+                  className="mx-1 text-green-600 p-1 border-2 border-green-600 hover:cursor-pointer hover:bg-green-400 hover:text-white rounded-md"
                   onClick={() => editForm(element.quote, element._id)}
                 >
-                  mode_edit
-                </i>
+                  Edit
+                </button>
               </li>
             </ul>
           );
         })}
       </div>
-
+      <Pagination items={quotesArr.length} currentPage = {currentPage} pageSize={pageSize} onPageChange={onPageChange}/>
       {visibility && (
         <form>
           <label htmlFor="quote">

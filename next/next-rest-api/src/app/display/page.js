@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Axios from "axios";
 
+
 export default function display() {
   const [quotesArr, setQuotesArr] = useState([]);
+
+
   //Get quotes
   const getQuotes = async () => {
     try {
@@ -16,6 +19,7 @@ export default function display() {
     }
   };
   getQuotes();
+
   return (
     <div className="my-10">
       <Link href="/" className="m-10 font-bold hover:cursor-pointer">
