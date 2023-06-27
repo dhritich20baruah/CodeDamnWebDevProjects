@@ -8,23 +8,12 @@ export default function display() {
   const [quotesArr, setQuotesArr] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
 
-  //Get quotes
-  const getQuotes = async () => {
-    try {
-      const response = await Axios.get("http://localhost:3000/api/quotes");
-      const quotesArr = response.data;
-      setQuotesArr(quotesArr);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  // getQuotes();
-
+  //Search quotes function
   const searchQuote = async () => {
     const searchObj = {
       searchTerm: searchTerm,
     };
-    await Axios.post(`/api/quote`, searchObj)
+    await Axios.post(`/api/search`, searchObj)
     .then((res) => {
       setQuotesArr(res.data);
     });

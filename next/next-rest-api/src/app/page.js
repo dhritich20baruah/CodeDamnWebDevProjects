@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Axios from "axios";
-import Paginate from "./display/components/Paginate";
-import Pagination from "./display/components/Pagination";
+import Paginate from "./components/Paginate";
+import Pagination from "./components/Pagination";
 
 export default function Home() {
   //Post quotes
