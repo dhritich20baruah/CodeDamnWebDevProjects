@@ -5,7 +5,6 @@ import Axios from "axios";
 import Paginate from "./display/components/Paginate";
 import Pagination from "./display/components/Pagination";
 
-
 export default function Home() {
   //Post quotes
   const [quote, setQuote] = useState("");
@@ -14,12 +13,11 @@ export default function Home() {
   const [quotesArr, setQuotesArr] = useState([]);
   const [visibility, setVisibility] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   const handleSubmit = async () => {
     const quoteObj = {
       quote: quote,
     };
-    console.log(quoteObj);
     await Axios.post(`/api/quotes`, quoteObj).then(() => {
       alert("Posted");
     });
@@ -37,10 +35,10 @@ export default function Home() {
   };
   getQuotes();
 
-  const pageSize = 3
+  const pageSize = 3;
   const onPageChange = (page) => {
-    setCurrentPage(page)
-  }
+    setCurrentPage(page);
+  };
 
   const paginatedQuotes = Paginate(quotesArr, currentPage, pageSize);
   //Delete Quotes
@@ -71,9 +69,18 @@ export default function Home() {
   };
 
   return (
-    <main className="m-12">
-      <Link href="/display">Display</Link>
-      <form>
+    <main className="space-y-10">
+      <nav className="px-5 text-white bg-indigo-800">
+        <ul className="flex space-x-5 ">
+          <li className="hover:cursor-pointer hover:text-orange-600">
+            <Link href="/display">Display</Link>
+          </li>
+          <li className="hover:cursor-pointer hover:text-orange-600">
+            <Link href="/search">Search</Link>
+          </li>
+        </ul>
+      </nav>
+      <form className="m-10">
         <label htmlFor="quote">
           <input
             type="text"
@@ -89,7 +96,7 @@ export default function Home() {
           Submit
         </button>
       </form>
-      <div className="my-10">
+      <div className="m-10">
         {paginatedQuotes.map((element) => {
           return (
             <ul key={element._id} className="flex justify-between">
@@ -112,7 +119,12 @@ export default function Home() {
           );
         })}
       </div>
-      <Pagination items={quotesArr.length} currentPage = {currentPage} pageSize={pageSize} onPageChange={onPageChange}/>
+      <Pagination
+        items={quotesArr.length}
+        currentPage={currentPage}
+        pageSize={pageSize}
+        onPageChange={onPageChange}
+      />
       {visibility && (
         <form>
           <label htmlFor="quote">
