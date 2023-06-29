@@ -82,17 +82,17 @@ export default function Home() {
       </nav>
       <form className="m-10">
         <label htmlFor="quote">
+          Enter Quote
           <input
             type="text"
             name="quote"
             id="quote"
             value={quote}
             onChange={(event) => setQuote(event.target.value)}
-            className="border-2 border-gray-400 p-2"
+            className="shadow-xl shadow-slate-500 w-[75%] h-10 p-2 outline-none"
           />
         </label>
-        <br />
-        <button className="p-2 bg-orange-500" onClick={handleSubmit}>
+        <button className="p-2 text-white bg-orange-500 hover:cursor-pointer" onClick={handleSubmit}>
           Submit
         </button>
       </form>
@@ -100,7 +100,7 @@ export default function Home() {
         {paginatedQuotes.map((element) => {
           return (
             <ul key={element._id} className="flex justify-between">
-              <li className="w-[90%]">{element.quote}</li>
+              <li className="w-[90%] italic text-lg font-serif">"{element.quote}"</li>
               <li className="w-[10%] flex">
                 <button
                   className="mx-1 text-red-600 p-1 border-2 border-red-600 hover:cursor-pointer hover:bg-red-400 hover:text-white rounded-md"

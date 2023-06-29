@@ -32,7 +32,7 @@ export default function display() {
         return (
           <>
           <ul key={element._id} className="flex justify-between mx-5">
-            <li>#{element.quote}</li>
+            <li className="text-lg font-serif italic">"{element.quote}"</li>
           </ul>
           <hr />
           </>
