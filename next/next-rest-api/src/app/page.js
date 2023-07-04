@@ -33,7 +33,7 @@ export default function Home() {
       console.error(error);
     }
   };
-  getQuotes();
+  // getQuotes();
 
   const pageSize = 3;
   const onPageChange = (page) => {
@@ -77,6 +77,9 @@ export default function Home() {
           </li>
           <li className="hover:cursor-pointer hover:text-orange-600">
             <Link href="/search">Search</Link>
+          </li>
+          <li className="hover:cursor-pointer hover:text-orange-600">
+            <Link href="/searchJson">Search JSON</Link>
           </li>
         </ul>
       </nav>

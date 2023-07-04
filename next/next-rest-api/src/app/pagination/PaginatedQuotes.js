@@ -12,7 +12,7 @@ const PaginatedQuotes = () => {
    const result = await quotesLength()
    setLength(result)
   }
-  getLength()
+  // getLength()
 
   const pageSize = 3;
   const pagesCount = Math.ceil(length / pageSize);
