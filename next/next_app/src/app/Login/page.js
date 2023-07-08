@@ -9,7 +9,7 @@ const Login = () => {
         return(
             <div>
                 <p>Welcome, {session.user.email}</p>
-                <button onClick={()=>signOut()}>Sign Out</button>
+                <button className="p-2 text-white bg-orange-400 hover:cursor-pointer hover:bg-red-500" onClick={()=>signOut()}>Sign Out</button>
             </div>
             )
         }
@@ -17,7 +17,7 @@ const Login = () => {
         return(
             <div>
                 <p>You are not Signed In</p>
-                <button onClick={()=>signIn()}>Sign In</button>
+                <button className="p-2 text-white bg-orange-400 hover:cursor-pointer hover:bg-red-500" onClick={()=>signIn()}>Sign In</button>
             </div>
         )
     }
