@@ -79,7 +79,7 @@ export default function Home() {
             <Link href="/search">Search</Link>
           </li>
           <li className="hover:cursor-pointer hover:text-orange-600">
-            <Link href="/searchJson">Search JSON</Link>
+            <Link href="/pagination">Pagination</Link>
           </li>
         </ul>
       </nav>

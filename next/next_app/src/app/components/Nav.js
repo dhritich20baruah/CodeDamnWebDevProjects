@@ -17,6 +17,9 @@ const Nav = () => {
             <Link href='/Blog'>
             <li className="hover:cursor-pointer hover:text-white">Blog</li>
             </Link>
+            <Link href='/Blog/Create'>
+            <li className="hover:cursor-pointer hover:text-white">New Blog</li>
+            </Link>
         </ul>
     </div>
   )

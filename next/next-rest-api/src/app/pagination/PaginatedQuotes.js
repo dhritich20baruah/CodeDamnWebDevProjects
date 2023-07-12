@@ -1,20 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import getQuotes, { quotesLength } from "./getQuotes";
 
-const PaginatedQuotes = () => {
+const PaginatedQuotes = async () => {
   // Pagination
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
   const [quotesArr, setQuotesArr] = useState([])
   const [length, setLength] = useState(0)
 
-  const getLength = async()=>{
-   const result = await quotesLength()
-   setLength(result)
-  }
-  // getLength()
-
-  const pageSize = 3;
+  useEffect(async() => {
+  const result = await fetch('https://dummyjson.com/users')
+  .then(res => res.json())
+ 
+  setQuotesArr(...result.users)
+  console.log(quotesArr.length)
+  setLength(quotesArr.length)
+  }, [])
+  
+ //Pagination
+  const pageSize = 6;
   const pagesCount = Math.ceil(length / pageSize);
 
   if (pagesCount === 1) return null;
@@ -24,22 +28,38 @@ const PaginatedQuotes = () => {
     pages.push(i)
   }
 
-
+  const startIndex = (currentPage - 1) * pageSize;
+ quotesArr.slice(startIndex, startIndex + pageSize);
   async function onPageChange(page){
     setCurrentPage(page)
     const result = await getQuotes(currentPage, pageSize);
     setQuotesArr(result)
     console.log(quotesArr)
   }
+  
   return (
     <main className="m-10">
       <h1>Paginated Display</h1>
       <div className="m-10">
+        <ul className="flex">
+          <li className="flex-1">First Name</li>
+          <li className="flex-1">Last Name</li>
+          <li className="flex-1">Email ID</li>
+          <li className="flex-1">Phone No.</li>
+          <li className="flex-1">Domain Name</li>
+        </ul>
         {quotesArr.map((element) => {
           return (
-            <ul key={element._id} className="flex justify-between">
-              <li className="w-[90%] italic font-serif text-lg">"{element.quote}"</li>
+            <>
+            <ul key={element._id} className="flex justify-between p-2">
+              <li className="flex-1">{element.firstName}</li>
+              <li className="flex-1">{element.lastName}</li>
+              <li className="flex-1">{element.email}</li>
+              <li className="flex-1">{element.phone}</li>
+              <li className="flex-1">{element.domain}</li>
             </ul>
+            <hr />
+            </>
           );
         })}
       </div>
