@@ -7,6 +7,9 @@ const commentSchema = new mongoose.Schema({
     email:{
         type:String
     },
+    blogId:{
+        type:String
+    },
     date:{
         type: Date,
         default: Date.now
