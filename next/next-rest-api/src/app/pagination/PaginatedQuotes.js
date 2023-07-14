@@ -29,7 +29,7 @@ const PaginatedQuotes = async () => {
   }
 
   const startIndex = (currentPage - 1) * pageSize;
- quotesArr.slice(startIndex, startIndex + pageSize);
+  quotesArr.slice(startIndex, startIndex + pageSize);
   async function onPageChange(page){
     setCurrentPage(page)
     const result = await getQuotes(currentPage, pageSize);
