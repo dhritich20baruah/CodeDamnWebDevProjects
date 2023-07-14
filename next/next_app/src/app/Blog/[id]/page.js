@@ -1,10 +1,13 @@
 import Blog from "@/app/model/Blog";
-import dbConnect from "@/app/components/dbConnect";
+import mongoose from "mongoose";
 import postComment from "./commentBack";
 import CommentComponent from "./CommentComponent";
 
 export default async function page({ params }) {
-  dbConnect();
+  await mongoose.connect("mongodb://127.0.0.1:27017/nextBlog", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   //Get blog and display
   const blogs = await Blog.findOne({ _id: params.id });
   const blogsId = params.id
@@ -25,7 +28,7 @@ export default async function page({ params }) {
       </p>
 
       {/* Comments Section */}
-      <CommentComponent/>
+      <CommentComponent blogsId={blogsId}/>
     </main>
   );
 }

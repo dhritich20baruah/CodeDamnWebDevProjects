@@ -1,9 +1,12 @@
-import dbConnect from "../components/dbConnect";
+import mongoose from "mongoose";
 import Blog from "../model/Blog";
 import Link from "next/link";
 
 export default async function Blogs() {
-  dbConnect();
+  await mongoose.connect("mongodb://127.0.0.1:27017/nextBlog", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   let blogs = await Blog.find({});
 
   return (

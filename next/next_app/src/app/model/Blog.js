@@ -20,4 +20,4 @@ const blogSchema = new mongoose.Schema({
 })
 
 mongoose.models = {}
-module.exports = mongoose.model('Comments', blogSchema)
+module.exports = mongoose.model('Blog', blogSchema)

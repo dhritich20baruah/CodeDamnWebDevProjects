@@ -4,7 +4,7 @@ const commentSchema = new mongoose.Schema({
     comment:{
         type:String
     },
-    name:{
+    userName:{
         type:String
     },
     blogId:{
@@ -17,4 +17,4 @@ const commentSchema = new mongoose.Schema({
 })
 
 mongoose.models = {}
-module.exports = mongoose.model('Comments', commentSchema)
+module.exports = mongoose.model('Comment', commentSchema)
