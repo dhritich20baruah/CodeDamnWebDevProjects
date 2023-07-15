@@ -20,7 +20,7 @@ export async function getComment(blogId) {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  let blogsId = blogId;
+  let blogsId = JSON.parse(JSON.stringify(blogId));
 
   const Comments = await Comment.find({
     $or: [

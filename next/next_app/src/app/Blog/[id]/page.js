@@ -2,6 +2,7 @@ import Blog from "@/app/model/Blog";
 import mongoose from "mongoose";
 import postComment from "./commentBack";
 import CommentComponent from "./CommentComponent";
+import DisplayComment from "./DisplayComment";
 
 export default async function page({ params }) {
   await mongoose.connect("mongodb://127.0.0.1:27017/nextBlog", {
@@ -29,6 +30,7 @@ export default async function page({ params }) {
 
       {/* Comments Section */}
       <CommentComponent blogsId={blogsId}/>
+      <DisplayComment blogid={blogsId}/>
     </main>
   );
 }

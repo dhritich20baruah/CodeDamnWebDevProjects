@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import postComment from "./commentBack";
 import { getComment } from "./commentBack";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const CommentComponent = (props) => {
   const [comment, setComment] = useState("");
@@ -14,25 +13,33 @@ const CommentComponent = (props) => {
 
   const {data:session} = useSession();
 
-  const router = useRouter();
-  
-  useEffect(async() => {
-    if(session){
-      await setUserName(session.user.name);
+  const handleSubmit = async () => {
+    await postComment(comment, userName, blogsId);
+    window.location.reload();
+  };
+
+
+
+  const logOut = () => {
+    localStorage.clear()
+    signOut()
+  }
+
+  useEffect(() => {
+    // Retrieve the userName from localStorage
+    const storedUserName = localStorage.getItem("user");
+    if (session) {
+      // If the session exists, set the userName from session.user.name
+      setUserName(session.user.name);
+      // Store the userName in localStorage
+      localStorage.setItem("user", session.user.name);
+    } else if (storedUserName) {
+      // If the session does not exist but there is a storedUserName, set the userName from localStorage
+      setUserName(storedUserName);
     }
-    fetchComments();
-  }, []);
+  }, [session]);
 
-  const handleSubmit = () => {
-    console.log(userName);
-    postComment(comment, userName, blogsId);
-    router.refresh();
-  };
-
-  const fetchComments = async () => {
-    let arr = await getComment(blogsId);
-    setCommentArr(arr);
-  };
+  
 
   return (
     <div className="my-8">
@@ -54,7 +61,7 @@ const CommentComponent = (props) => {
           </button>
           <button
             className="p-2 text-white bg-red-600 ml-3 hover:cursor-pointer hover:bg-red-900"
-            onClick={signOut}
+            onClick={logOut}
           >
             SignOut
           </button>
@@ -72,18 +79,7 @@ const CommentComponent = (props) => {
           </p>
         </div>
       )}
-      <div className="my-5">
-        {commentArr.map((element) => {
-          return (
-            <>
-              <div className="border-2 p-3 m-3 border-gray-500 rounded-md">
-                <p className="font-semibold mb-3">{element.userName}</p>
-                <p className="italic font-serif">{element.comment}</p>
-              </div>
-            </>
-          );
-        })}
-      </div>
+      
     </div>
   );
 };
