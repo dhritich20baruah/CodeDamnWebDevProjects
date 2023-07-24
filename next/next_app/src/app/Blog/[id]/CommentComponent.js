@@ -1,13 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import postComment from "./commentBack";
-import { getComment } from "./commentBack";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 const CommentComponent = (props) => {
   const [comment, setComment] = useState("");
   const [userName, setUserName] = useState("");
-  const [commentArr, setCommentArr] = useState([]);
 
   const { blogsId } = props;
 
@@ -17,8 +15,6 @@ const CommentComponent = (props) => {
     await postComment(comment, userName, blogsId);
     window.location.reload();
   };
-
-
 
   const logOut = () => {
     localStorage.clear()
