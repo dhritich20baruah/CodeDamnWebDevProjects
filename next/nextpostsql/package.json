@@ -1,5 +1,5 @@
 {
-  "name": "next_no_app",
+  "name": "nextpostsql",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.4",
-    "mapbox-gl": "^2.15.0",
-    "next": "13.4.4",
-    "postcss": "8.4.24",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.13",
+    "next": "13.4.13",
+    "pg": "^8.11.2",
+    "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.2"
+    "tailwindcss": "3.3.3"
   }
 }
