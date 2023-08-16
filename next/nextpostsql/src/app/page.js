@@ -26,8 +26,6 @@ export default async function Home() {
   const data = await pool.query("SELECT * FROM notes");
   const result = data.rows;
 
-  //UPDATE
-
   //DELETE
   async function deleteNote(data){
     "use server"
