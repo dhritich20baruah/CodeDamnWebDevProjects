@@ -81,6 +81,9 @@ export default function Home() {
           <li className="hover:cursor-pointer hover:text-orange-600">
             <Link href="/pagination">Pagination</Link>
           </li>
+          <li className="hover:cursor-pointer hover:text-orange-600">
+            <Link href="/Recoil">Recoil</Link>
+          </li>
         </ul>
       </nav>
       <form className="m-10">
