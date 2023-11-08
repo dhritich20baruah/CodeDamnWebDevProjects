@@ -4,7 +4,8 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article"
+    "displayName": "Article",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,26 @@
       "required": true,
       "maxLength": 50,
       "minLength": 3
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 110
+    },
+    "Body": {
+      "type": "text",
+      "required": true
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
