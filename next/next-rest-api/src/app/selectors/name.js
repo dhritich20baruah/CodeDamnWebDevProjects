@@ -9,3 +9,12 @@ export const lengthState = selector({
         return lengthOfName;
     }
 })
+
+export const toUpper = selector({
+    key: "upperState",
+    get: ({get}) => {
+        const name = get(nameState);
+        const upperCase = name.toUpperCase();
+        return upperCase
+    }
+})
